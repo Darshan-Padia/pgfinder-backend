@@ -1,4 +1,4 @@
-package com.pgfinder.pgfinder;
+package com.pgfinder.Model;
 
 // note that -> java.persistence is changed to jakarta.persistence!
 import jakarta.persistence.*;
