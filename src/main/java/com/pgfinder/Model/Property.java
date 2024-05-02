@@ -16,9 +16,9 @@ public class Property {
     @Column(name = "property_id")
     private Long propertyId;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
-    private Owner owner;
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", referencedColumnName = "id")
+    // private User user;
 
     @Column(name = "property_name", nullable = false)
     private String propertyName;
@@ -64,13 +64,13 @@ public class Property {
         this.propertyId = propertyId;
     }
 
-    public Owner getOwner() {
-        return owner;
-    }
+    // public Owner getOwner() {
+    //     return owner;
+    // }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
+    // public void setOwner(Owner owner) {
+    //     this.owner = owner;
+    // }
 
     public String getPropertyName() {
         return propertyName;
@@ -167,5 +167,12 @@ public class Property {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+// public User getUser() {
+//         return user;
+//     }
+
+//     public void setUser(User user) {
+//         this.user = user;
+//     }
 
 }

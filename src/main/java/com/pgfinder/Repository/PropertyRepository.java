@@ -21,7 +21,7 @@ import java.util.List;
             @RequestParam(required = false, defaultValue = "2000-01-01") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date availableDate) {
 
  */
-
+                
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Long> {
 

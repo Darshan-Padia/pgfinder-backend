@@ -2,6 +2,8 @@ package com.pgfinder.Controller;
 
 import com.pgfinder.Model.Property;
 import com.pgfinder.Service.PropertyService;
+import com.pgfinder.customannotions.AuthRequired;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+// @CrossOrigin(origins = "http://localhost:5173",allowCredentials = "true")
+
 @RequestMapping("/api/properties")
 public class PropertyController {
 
@@ -51,8 +55,13 @@ public class PropertyController {
         return new ResponseEntity<>(properties, HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<Property> addProperty(@RequestBody Property property) {
+    // @CrossOrigin(origins = "http://localhost:5173")
+    @PostMapping("/add")
+    @AuthRequired
+    public ResponseEntity<Property> addProperty(
+
+            @RequestBody Property property) {
+
         Property newProperty = propertyService.saveProperty(property);
         return new ResponseEntity<>(newProperty, HttpStatus.CREATED);
     }
