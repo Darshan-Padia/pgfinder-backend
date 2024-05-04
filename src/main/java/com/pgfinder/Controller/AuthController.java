@@ -217,7 +217,7 @@ public class AuthController {
             ResponseCookie cookie = ResponseCookie.from("accessToken", "")
                     .httpOnly(true)
                     .secure(true)
-                    .path("/api/auth")
+                    .path("/")
                     .maxAge(cookieExpiry)
                     .build();
             response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
@@ -225,21 +225,21 @@ public class AuthController {
             ResponseCookie cookiee = ResponseCookie.from("token", "")
                     .httpOnly(true)
                     .secure(true)
-                    .path("/api/auth")
+                    .path("/")
                     .maxAge(cookieExpiry)
                     .build();
             response.addHeader(HttpHeaders.SET_COOKIE, cookiee.toString());
             ResponseCookie cookieee = ResponseCookie.from("email", "")
                     .httpOnly(true)
                     .secure(true)
-                    .path("/api/auth")
+                    .path("/")
                     .maxAge(cookieExpiry)
                     .build();
             response.addHeader(HttpHeaders.SET_COOKIE, cookieee.toString());
             ResponseCookie cookierole = ResponseCookie.from("role", "")
                     .httpOnly(true)
                     .secure(true)
-                    .path("/api/auth")
+                    .path("/")
                     .maxAge(cookieExpiry)
                     .build();
             response.addHeader(HttpHeaders.SET_COOKIE, cookierole.toString());

@@ -1,7 +1,5 @@
 package com.pgfinder.Model;
 
-import java.util.List;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -10,30 +8,25 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private String phone;
-
 
     // Many-to-one relationship with Role
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
-
-    // @OneToMany
-    // @JoinColumn(name = "property_id" , referencedColumnName = "id")
-    // private List<Property> properties;
 
     public Long getId() {
         return id;
@@ -74,8 +67,6 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    
 
     public Role getRole() {
         return role;

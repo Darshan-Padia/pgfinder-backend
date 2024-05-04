@@ -55,6 +55,8 @@ public class SecurityConfiguration {
 
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/api/users/**").permitAll()
+                        .requestMatchers("/api/images/**").permitAll()
+
                         .requestMatchers("/api/properties").permitAll()
 
                         .requestMatchers("/api/properties/**").permitAll()

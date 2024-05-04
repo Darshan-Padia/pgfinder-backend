@@ -2,6 +2,8 @@ package com.pgfinder.Controller;
 
 import com.pgfinder.Model.Owner;
 import com.pgfinder.Service.OwnerService;
+import com.pgfinder.customannotions.AuthRequired;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,7 @@ public class OwnerController {
     }
 
     @GetMapping("/{id}")
+    @AuthRequired
     public ResponseEntity<Owner> getOwnerById(@PathVariable("id") Long id) {
         Owner owner = ownerService.getOwnerById(id);
         if (owner != null) {
@@ -37,6 +40,12 @@ public class OwnerController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    // @GetMapping("/me")
+    // @AuthRequired
+    // public ResponseEntity<Owner> getOwner(
+    //     @CookieValue(value = "email", defaultValue = "email") String email) {
+    //         User user = userRepository.findByEmail(email);
+
 
     @PostMapping
     public ResponseEntity<Owner> saveOwner(@RequestBody Owner owner) {

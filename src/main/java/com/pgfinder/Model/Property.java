@@ -16,9 +16,7 @@ public class Property {
     @Column(name = "property_id")
     private Long propertyId;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", referencedColumnName = "id")
-    // private User user;
+
 
     @Column(name = "property_name", nullable = false)
     private String propertyName;
@@ -49,6 +47,13 @@ public class Property {
 
     @Column(name = "num_bathrooms", nullable = false)
     private int numBathrooms;
+    
+    
+    
+    // multiple pgs can have same owner .. introducing owner_id column
+    @ManyToOne()
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    private User owner;
 
     @Column(name = "available_date")
     private Date availableDate;
@@ -63,14 +68,6 @@ public class Property {
     public void setPropertyId(Long propertyId) {
         this.propertyId = propertyId;
     }
-
-    // public Owner getOwner() {
-    //     return owner;
-    // }
-
-    // public void setOwner(Owner owner) {
-    //     this.owner = owner;
-    // }
 
     public String getPropertyName() {
         return propertyName;
@@ -152,6 +149,14 @@ public class Property {
         this.numBathrooms = numBathrooms;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     public Date getAvailableDate() {
         return availableDate;
     }
@@ -167,12 +172,9 @@ public class Property {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-// public User getUser() {
-//         return user;
-//     }
 
-//     public void setUser(User user) {
-//         this.user = user;
-//     }
+   
+    
+
 
 }

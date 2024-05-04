@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.pgfinder.Model.User;
 import com.pgfinder.Service.UserService;
+import com.pgfinder.customannotions.AuthRequired;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173",allowCredentials = "true")
@@ -34,7 +35,18 @@ public class UserController {
         User user = userService.getUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+    @GetMapping("/me")
+    @AuthRequired
+    public ResponseEntity<User> getOwner(
+        @CookieValue(value = "email", defaultValue = "email") String email) {
+            User user = userService.getUserByEmail(email);
+            if (user != null) {
+                return new ResponseEntity<>(user, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
 
+        }
     
     
 

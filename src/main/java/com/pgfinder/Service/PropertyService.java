@@ -32,16 +32,35 @@ public class PropertyService {
         return propertyRepository.findByCityContainingAndNumRoomsGreaterThanEqualAndRentGreaterThanEqualAndRentLessThanEqualAndAvailableDateGreaterThanEqual(city, numRooms, minRent, maxRent, availableDate);
     }
 
-    // public Property saveProperty(Property property, String userEmail) {
-    //     // Fetch the user from the database
-    //     User user = userService.getUserByEmail(userEmail);
+    public List<Property> getPropertiesByOwnerEmail(String email) {
+        User owner = userService.getUserByEmail(email);
+        return propertyRepository.findByOwner(owner);
+    }
 
-    //     // Associate the property with the user
-    //     property.setUser(user);
+     // Update operation
+     public Property updateProperty(Long id, Property updatedProperty) {
+        Optional<Property> existingProperty = propertyRepository.findById(id);
+        if (existingProperty.isPresent()) {
+            Property property = existingProperty.get();
+            property.setPropertyName(updatedProperty.getPropertyName());
+            property.setAddress(updatedProperty.getAddress());
+            property.setCity(updatedProperty.getCity());
+            property.setState(updatedProperty.getState());
+            property.setPincode(updatedProperty.getPincode());
+            property.setDescription(updatedProperty.getDescription());
+            property.setRent(updatedProperty.getRent());
+            property.setNumRooms(updatedProperty.getNumRooms());
+            property.setNumBathrooms(updatedProperty.getNumBathrooms());
+            property.setOwner(updatedProperty.getOwner());
+            property.setAvailableDate(updatedProperty.getAvailableDate());
+            return propertyRepository.save(property);
 
-    //     // Save the property
-    //     return propertyRepository.save(property);
-    // }
+        } else {
+            return null; // Property not found
+        }
+    }
+
+
     public Property saveProperty(Property property) {
         return propertyRepository.save(property);
     }
