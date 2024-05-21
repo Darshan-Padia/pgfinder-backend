@@ -10,7 +10,6 @@ PG-Finder is a full-stack web application that connects paying guest (PG) owners
 - **PG Listing**: PG owners can create, update, and manage their property listings with detailed information and amenities.
 - **Search and Filtering**: Tenants can search for PGs based on location, amenities, pricing, and other filters.
 - **Communication**: Integrated direct links like phone number, whatsapp, mail for communication between owners and tenants.
-- **Real-time Updates**: Real-time updates for booking statuses and availability.
 
 ## Technologies Used
 
